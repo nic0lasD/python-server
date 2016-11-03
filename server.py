@@ -22,7 +22,7 @@ while True:
 
     #  Do some 'work'
 	#files = {'file': ('picture.jpg',open('/style-transfer/outputs/outputname.jpg', 'rb'))}
-	subprocess.call(["ls", "/style-transfer/outputs"])
+	subprocess.call(["ls", "../style-transfer/outputs"])
 	#requests.post("http://"+ip+"/uploadimage", files=files)
     #  Send reply back to client
 

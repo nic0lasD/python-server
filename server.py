@@ -15,7 +15,7 @@ while True:
 	message = socket.recv()
 	print("Received request: %s" % message)
 	try:
-		thread.start_new_thread( treatRequest (message))
+		thread.start_new_thread( treatRequest, message)
 	except:
 		print "Error: unable to start thread"
 	

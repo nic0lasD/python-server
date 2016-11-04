@@ -2,6 +2,7 @@ import subprocess
 import zmq
 import requests
 import os
+import thread
 
 
 context = zmq.Context()
@@ -13,6 +14,13 @@ while True:
     #  Wait for next request from client
 	message = socket.recv()
 	print("Received request: %s" % message)
+	try:
+		thread.start_new_thread( treatRequest (message))
+	except:
+		print "Error: unable to start thread"
+	
+	
+def treatRequest(message):
 	message = message.split('#')
 	ip = message[0]
 	art = message[1]

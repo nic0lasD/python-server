@@ -32,7 +32,7 @@ def treatRequest(message):
 	list = os.listdir("../style-transfer/outputs/")
 	files = {'file': (clientImage+'.jpg',open('../style-transfer/outputs/'+list[0], 'rb'))}
 	requests.post("http://"+ip+"uploadresult", files=files)
-	os.remove('../style-transfer/outputs/'+list[0])
+	#os.remove('../style-transfer/outputs/'+list[0])
     #  Send reply back to client
 
 

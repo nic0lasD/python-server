@@ -1,7 +1,7 @@
 import subprocess
 import zmq
 import requests
-
+import urllib2
 
 
 context = zmq.Context()
@@ -16,9 +16,11 @@ while True:
 	message = message.split('#')
 	ip = message[0]
 	art = message[1]
-	clientImage = message[2]
+	client = message[2]
+	artImage = urllib2.urlopen('http://'+art)
+	clientImage = urllib2.urlopen('http://'+client)
 	socket.send(b"Style style transfer will begin")
-	subprocess.call(["python", "../style-transfer/style.py" ,"-s", "http://"+art, "-c", "http://"+clientImage, "-m", "googlenet", "-g", "-1"])
+	subprocess.call(["python", "../style-transfer/style.py" ,"-s", art, "-c", clientImage, "-m", "googlenet", "-g", "-1"])
 
     #  Do some 'work'
 	#files = {'file': ('picture.jpg',open('/style-transfer/outputs/outputname.jpg', 'rb'))}
